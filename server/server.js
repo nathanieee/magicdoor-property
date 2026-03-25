@@ -61,6 +61,7 @@ const uploadRoutes = require('./routes/upload');
 const notificationRoutes = require('./routes/notificationRoutes');
 const settingsRoutes = require('./routes/settingsRoutes');
 const chatRoutes = require('./routes/chatRoutes');
+const notesRoutes = require('./routes/notes');
 
 // Import services
 const notificationService = require('./services/notificationService');
@@ -77,6 +78,7 @@ app.use('/api/upload', uploadRoutes);
 app.use('/api/notifications', notificationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/chats', chatRoutes);
+app.use('/api/notes', notesRoutes);
 
 // Base route
 app.get('/api/', (req, res) => {
