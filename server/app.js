@@ -13,6 +13,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
 const userRoutes = require('./routes/userRoutes');
 const propertyRoutes = require('./routes/properties');
+const notesRoutes = require('./routes/notes');
 
 const app = express();
 
@@ -59,16 +60,17 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/properties', propertyRoutes);
+app.use('/api/notes', notesRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  
+
   const statusCode = err.statusCode || 500;
   const status = err.status || 'error';
-  
+
   res.status(statusCode).json({
-    status,
+    success: status === 'fail' || statusCode >= 400 ? false : true,
     message: err.message,
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });
