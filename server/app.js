@@ -70,7 +70,7 @@ app.use((err, req, res, next) => {
   const status = err.status || 'error';
 
   res.status(statusCode).json({
-    success: status === 'fail' || statusCode >= 400 ? false : true,
+    status,
     message: err.message,
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
   });

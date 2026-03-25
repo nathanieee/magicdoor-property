@@ -8,7 +8,8 @@ const {
   deleteNote
 } = require('../controllers/notesController');
 
-// Notes routes (no authentication required for testing)
+// Notes routes - Public endpoints for demo feature
+// NOTE: No authentication required - this is intentional for the notes demo feature
 router.route('/')
   .post(createNote)
   .get(getNotes);

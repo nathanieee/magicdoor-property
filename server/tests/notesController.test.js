@@ -35,7 +35,7 @@ describe('NotesController Tests', () => {
         });
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Title and content are required');
     });
 
@@ -47,7 +47,7 @@ describe('NotesController Tests', () => {
         });
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Title and content are required');
     });
 
@@ -57,7 +57,7 @@ describe('NotesController Tests', () => {
         .send({});
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
     });
   });
 
@@ -114,7 +114,7 @@ describe('NotesController Tests', () => {
         .get('/api/notes/99999');
 
       expect(response.statusCode).toBe(404);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Note not found');
     });
   });
@@ -183,7 +183,7 @@ describe('NotesController Tests', () => {
         .send({});
 
       expect(response.statusCode).toBe(400);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Title or content is required');
     });
 
@@ -193,7 +193,7 @@ describe('NotesController Tests', () => {
         .send({ title: 'Updated' });
 
       expect(response.statusCode).toBe(404);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Note not found');
     });
   });
@@ -225,7 +225,7 @@ describe('NotesController Tests', () => {
         .delete('/api/notes/99999');
 
       expect(response.statusCode).toBe(404);
-      expect(response.body.success).toBe(false);
+      expect(response.body.status).toBe('fail');
       expect(response.body.message).toContain('Note not found');
     });
   });
