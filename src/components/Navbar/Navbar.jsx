@@ -22,6 +22,9 @@ const Navbar = () => {
           <li>
             <Link to={"/contact"}>CONTACT</Link>
           </li>
+          <li>
+            <Link to={"/notes"}>NOTES</Link>
+          </li>
         </ul>
         <RxHamburgerMenu
           className="hamburger"
