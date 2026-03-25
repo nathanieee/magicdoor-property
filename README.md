@@ -52,10 +52,16 @@ Clone the repository and install dependencies:
 npm install
 ```
 
-Run the local development server:
+Run the local frontend server:
 
 ```bash
 npm start
+```
+
+Run the local backend server:
+
+```bash
+npm run dev
 ```
 
 The app will be available at `http://localhost:5173`.

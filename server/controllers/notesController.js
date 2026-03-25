@@ -9,7 +9,7 @@ const generateId = () => String(nextId++);
 /**
  * @desc    Create a new note
  * @route   POST /api/notes
- * @access  Private
+ * @access  Public
  */
 exports.createNote = catchAsync(async (req, res) => {
   const { title, content } = req.body;
@@ -37,7 +37,7 @@ exports.createNote = catchAsync(async (req, res) => {
 /**
  * @desc    Get all notes
  * @route   GET /api/notes
- * @access  Private
+ * @access  Public
  */
 exports.getNotes = catchAsync(async (req, res) => {
   res.status(200).json({
@@ -50,7 +50,7 @@ exports.getNotes = catchAsync(async (req, res) => {
 /**
  * @desc    Get a single note by ID
  * @route   GET /api/notes/:id
- * @access  Private
+ * @access  Public
  */
 exports.getNote = catchAsync(async (req, res) => {
   const note = notes.find(n => n.id === req.params.id);
@@ -68,7 +68,7 @@ exports.getNote = catchAsync(async (req, res) => {
 /**
  * @desc    Update a note
  * @route   PUT /api/notes/:id
- * @access  Private
+ * @access  Public
  */
 exports.updateNote = catchAsync(async (req, res) => {
   const noteIndex = notes.findIndex(n => n.id === req.params.id);
@@ -99,7 +99,7 @@ exports.updateNote = catchAsync(async (req, res) => {
 /**
  * @desc    Delete a note
  * @route   DELETE /api/notes/:id
- * @access  Private
+ * @access  Public
  */
 exports.deleteNote = catchAsync(async (req, res) => {
   const noteIndex = notes.findIndex(n => n.id === req.params.id);

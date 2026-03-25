@@ -8,8 +8,8 @@ const Notes = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // API base URL
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  // API base URL - uses relative path for Vite proxy in development
+  const API_URL = import.meta.env.VITE_API_URL || '/api';
 
   // Fetch all notes on component mount
   useEffect(() => {
