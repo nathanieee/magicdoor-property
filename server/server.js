@@ -6,7 +6,6 @@ const path = require('path');
 const helmet = require('helmet');
 const xss = require('xss-clean');
 const rateLimit = require('express-rate-limit');
-const killPort = require("kill-port");
 const getPort = require("get-port").default;
 const { Server } = require('socket.io');
 const { connectDB } = require('./config/db');
@@ -95,21 +94,7 @@ app.use(errorHandler);
 
 
 
-const PORT = parseInt(process.env.PORT, 10) || 5000;
-
-const checkPort = async (port, maxPort = 65535) => {
-  if (port > maxPort) {
-    throw new Error("No available ports found");
-  }
-
-  try {
-    await killPort(port, "tcp");
-    await killPort(port, "udp");
-    return port;
-  } catch (err) {
-    return checkPort(port + 1, maxPort);
-  }
-};
+const PORT = parseInt(process.env.PORT, 10) || 5152;
 
 process.on("uncaughtException", (err) => {
   console.log(`Error: ${err.message}`);
@@ -117,8 +102,7 @@ process.on("uncaughtException", (err) => {
 });
 
 const startServer = async () => {
-  const safePort = await checkPort(PORT);
-  const final_port = await getPort({ port: safePort });
+  const final_port = await getPort({ port: PORT });
 
   const server = app.listen(final_port, () => {
     console.log(`Server running on port ${final_port}`);
