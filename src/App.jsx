@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
 import AboutUs from './components/AboutUs/AboutUs';
 import Contact from './components/Contact/Contact';
+import Notes from './components/Notes/Notes';
 import Villas from './components/Villa/Villas';
 import SingleVilla from './components/Villa/SingleVilla';
 import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
@@ -19,6 +20,7 @@ const App = () => {
           <Route path='/' element={<Home/>}/>
           <Route path='/aboutus' element={<AboutUs/>}/>
           <Route path='/contact' element={<Contact/>}/>
+          <Route path='/notes' element={<Notes/>}/>
           <Route path='/termsandconditions' element={<TermsAndConditions/>}/>
           <Route path='/villas' element={<Villas/>}/>
           <Route path='/villa/:id' element={<SingleVilla/>}/>
